@@ -1,0 +1,540 @@
+<!--
+說明：
+1.懶得寫註解，所以用直白的方式來寫，一方面好修改且過一陣子還能看得懂當初在想什麼
+2.桌機瀏覽器專用，適合 1920x1080 解析度以上的螢幕
+3.僅使用 HTML+CSS+jQuery 製作，不需在伺服器環境下也可使用 *非伺服器環境 cookies 無作用，重新整理時選單紀錄會消失
+4.修改預設版面只要修改文件下方這三個變數的值即可，
+
+  var default_menu_left = '綜合';
+  var default_menu_middle = '歡樂惡搞';
+  var default_menu_right = '綜合學術';
+
+修改值請參照 選單List <div id="select_option_list"> 內的選單名稱
+
+5.補充：每個版面都有個別的功能設定，不一定合用
+
+-->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+    html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:hidden}
+    .display_none{display:none}
+    .column{width:32.95%;height:10px;display:inline-block;position:relative;z-index:1}
+    .iframe_container{width:100%;height:10px;display:inline-block}
+    .select_menu{position:absolute;top:32px;right:23px;z-index:3}
+  </style>
+</head>
+<body>
+<!--左 Start-->
+<div class="column" id="column_left">
+  <select class="select_menu" id="menu_left" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+    <!--載入選單-->
+  </select>
+  <iframe class="iframe_container" id="iframe_menu_left" src="#"></iframe>
+</div>
+<!--左 End-->
+
+<!--中 Start-->
+<div class="column" id="column_middle">
+  <select class="select_menu" id="menu_middle" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+    <!--載入選單-->
+  </select>
+  <iframe class="iframe_container" id="iframe_menu_middle" src="#"></iframe>
+</div>
+<!--中 End-->
+
+<!--右 Start-->
+<div class="column" id="column_right">
+  <select class="select_menu" id="menu_right" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+    <!--載入選單-->
+  </select>
+  <iframe class="iframe_container" id="iframe_menu_right" src="#"></iframe>
+</div>
+<!--右 End-->
+
+<!--選單List Start-->
+<div id="select_option_list" class="display_none">
+  <option value="0">預設版面</option>
+
+  <optgroup label="4chan">
+  <option value="https://boards.4chan.org/b/">/b/ - Random</option>
+  </optgroup>
+
+  <optgroup label="連線板">
+  <option value="https://2cat.komica.org/">2CAT</option>
+  <option value="https://2cat.komica.org/0d/fstyle.html">貓管理部</option>
+  <option value="https://komica.blogspot.com/">站務公告</option>
+  <option value="https://2cat.komica.org/~tedc21thc/anime/">動畫</option>
+  <option value="https://2cat.komica.org/~scribe/2c/">漫畫</option>
+  <option value="https://aqua.komica.org/04/index.htm">影視</option>
+  <option value="https://luna.komica.org/12/index.htm">歡樂惡搞</option>
+  <option value="https://aqua.komica.org/25/index.htm">新聞
+  <!--
+  <option value="https://sora.komica.org/01/index.htm">突發事件<small> new</small></option>
+  -->
+    <!--
+  <small> (<a href="https://sora.komica.org/00/index.htm">綜合移至雜談)</small></option>
+  -->
+  <option value="https://aqua.komica.org/62/index.htm">氣象</option>
+  <option value="https://2cat.komica.org/~tedc21thc/new/index.html">新番捏他</option>
+  <option value="https://2cat.komica.org/~tedc21thc/live/index.html">新番實況</option>
+  <option value="https://yuutan.mymoe.moe/pawahuru/">三次實況</option>
+  <option value="https://aqua.komica.org/09/index.htm">模型</option>
+  <option value="https://vi.anacel.com/fg/vichan/fg/">Figure/GK</option>
+  <option value="https://aqua.komica.org/26/index.htm">玩偶</option>
+  <option value="http://alica.dreamhosters.com/screenshot/">螢幕攝</option>
+  <option value="https://aqua.komica.org/13/index.htm">特攝</option>
+  <option value="http://rths.ml/sd/">祭典</option>
+  <option value="https://tsukisiro.snow-sugar.net/iyasi/">治癒系</option>
+  <option value="https://aqua.komica.org/15/index.htm">蘿蔔</option>
+  <option value="https://aqua.komica.org/50/index.htm">攝影</option>
+  <option value="https://aqua.komica.org/17/index.htm">軍武</option>
+  <option value="https://2cat.komica.org/~caradmin/all-car/">車</option>
+  <option value="https://2cat.komica.org/~kirur/img2/index.htm">萌</option>
+  <option value="https://2cat.komica.org/~kirur/orz/index.htm">詢問</option>
+  <option value="http://rthost.fam.cx/aa/pbbs.html">AA</option>
+  <option value="https://secilia.zawarudo.org/costumade/">COSPLAY</option>
+  <option value="https://sora.komica.org/40/index.htm">改造</option>
+  <option value="http://komica.yucie.net/vote/">投票所</option>
+  <option value="http://komica.yucie.net/quiztest/">問答</option>
+  <option value="http://rthost.fam.cx/komica-up/upload.php">UP</option>
+  </optgroup>
+
+  <optgroup label="連線二板">
+  <option value="http://gzone-anime.info/UnitedSites/academic/">綜合學術</option>
+  <option value="https://aqua.komica.org/75/index.htm">數學</option>
+  <option value="https://study.mymoe.moe/history/">歷史</option>
+  <option value="https://aqua.komica.org/school/">校園</option>    
+  <option value="https://2cat.org/~career/">職業</option>
+  <option value="https://2cat.org/~finance/">財經</option>
+  <option value="http://gzone-anime.info/UnitedSites/shopping/">生活消費</option>
+  <option value="https://2cat.org/~law/">法律</option>
+  <option value="https://liaison.nagatoyuki.org/outremer/">海外</option>
+  <option value="https://kagaminerin.org/hongkong/">閒談@香港</option>
+  <!--
+  <option value="https://aqua.komica.org/37/index.htm">消費電子 <small>(併至科技版)</small></option>
+  -->
+  <option value="http://gzone-anime.info/UnitedSites/art/">藝術</option>
+  <option value="https://2cat.org/~artist/">繪師</option>
+  <option value="https://komica.yucie.net/trade/">交易合購</option>
+  <option value="https://aqua.komica.org/61/index.htm">鋼普拉</option>
+  <option value="https://2cat.komica.org/~gtr2003/pixmicat1/">生存遊戲</option>
+  <option value="https://tsukisiro.snow-sugar.net/tetsudou/">鐵道</option>
+  <option value="http://ningen.dreamhosters.com/moe/">燃</option>
+  <option value="https://wildboar.mymoe.moe/humour/">笑話</option>
+  <option value="https://2cat.org/~quiz/">猜謎</option>
+  <option value="https://storysol.boguspix.com/">故事接龍</option>
+  <option value="https://aqua.komica.org/76/">歐美動畫</option>
+  <option value="https://2cat.komica.org/~rt/pd/">大自然</option>
+  <option value="https://2cat.org/~astronomy/">天文</option>
+  <option value="https://kagaminerin.org/horoscope/">星座命理</option>
+  <option value="https://crystal.mymoe.moe/newage/">New Age</option>
+  <option value="https://moecorner.com/iboards/Relationship/">戀愛</option>
+  <option value="https://2cat.org/~supernature/">超常現象</option>
+  <option value="https://aqua.komica.org/dream/">夢</option>
+  <option value="https://liaison.nagatoyuki.org/myth/">流言終結</option>
+  <option value="https://politics.mymoe.moe/index/">政治</option>
+  <option value="https://travel.voidfactory.com/">旅遊</option>
+  <option value="https://norrk.mymoe.moe/headphone/">耳機</option>
+  <option value="https://phone.mymoe.moe/pda/">手機</option>
+  <option value="https://2cat.org/~pixmicat/">服飾</option>
+  <option value="https://yuutan.mymoe.moe/kaminoke/">髮型</option>
+  <option value="https://kagaminerin.org/cosmetic/">美容</option>
+  <option value="https://mymoe.moe/boards/24/house/">家政</option>
+  <option value="http://gzone-anime.info/UnitedSites/books/">圖書</option>
+  <option value="https://mymoe.moe/boards/24/mindmap/">讀書筆記</option>
+  <option value="https://liaison.nagatoyuki.org/conseil/">煩惱相談</option>
+  <option value="https://liaison.nagatoyuki.org/ancre/">安價</option>
+  </optgroup>
+
+  <optgroup label="影音">
+  <option value="https://2cat.komica.org/~touhonoob/21d/">短片</option>
+  <option value="https://sora.komica.org/69/">短片2</option>
+  <option value="https://komica.yucie.net/video/">彈幕</option>
+  <option value="https://komica.yucie.net/boardcast/">直播</option>
+  <option value="https://aqua.komica.org/39/index.htm">MAD</option>
+  <option value="https://luna.komica.org/74/">Vtuber</option>
+  </optgroup>
+
+  <optgroup label="遊戲">
+  <option value="https://aqua.komica.org/27/index.htm">遊戲速報</option>
+  <option value="https://kagaminerin.org/act/">動作遊戲</option>
+  <option value="https://komica.yucie.net/fight/">格鬥遊戲</option>
+  <option value="https://kagaminerin.org/stg/">2D STG</option>
+  <option value="https://kagaminerin.org/fps/">3D STG</option>
+  <option value="https://kagaminerin.org/avg/">冒險遊戲</option>
+  <option value="https://kagaminerin.org/rpg/">RPG</option>
+  <option value="https://2cat.komica.org/~caradmin/rcg-slg/">賽車遊戲</option>
+  <option value="https://2cat.komica.org/~caradmin/rcg-slg/">戰略遊戲</option>
+  <option value="https://komica.yucie.net/slg/">養成遊戲</option>
+  <option value="https://komica.yucie.net/renai/">戀愛遊戲</option>
+  <option value="https://2cat.org/~boylove/">女性向遊戲</option>
+  <option value="https://2cat.org/~webgame/">網頁遊戲</option>
+  <option value="https://komica.dbfoxtw.me/indiegame/">獨立遊戲</option>
+  <option value="https://2cat.org/~handheld/">手機遊戲</option>
+  <option value="https://2cat.org/~motion/">VR/體感遊戲</option>
+  <option value="https://2cat.org/~boardgame/">桌上遊戲</option>
+  <option value="https://moecorner.com/iboards/Mahjong/">麻將</option>
+  <option value="https://komica.dbfoxtw.me/gameprogramming/">遊戲設計</option>
+  <option value="https://rm2k3xpvx.mymoe.moe/rm/">RPG Maker</option>
+  <option value="https://steam.mymoe.moe/STEAM/index.htm">STEAM</option>
+  <option value="https://aqua.komica.org/52/index.htm">網路遊戲</option>
+  </optgroup>
+
+  <optgroup label="遊戲作品">
+  <option value="https://secilia.zawarudo.org/alicegearaegis/">AGA</option>
+  <option value="https://2cat.org/~azurlane/">Azur Lane</option>
+  <option value="https://gamegroup.mymoe.moe/cosmicbreak/">CosmicBreak</option>
+  <option value="https://palladium.mymoe.moe/ElswordNew/">Elsword</option>
+  <option value="https://sdgo.mymoe.moe/GGCDNF/">DNF</option>
+  <option value="https://lordofdota2.mymoe.moe/DOTA2/">DOTA2</option>
+  <option value="https://komica.yucie.net/fez/">FEZ</option>
+  <option value="https://fina.mymoe.moe/gw2/">GW2</option>
+  <option value="https://fenrisulfr.org/gta/">GTA</option>
+  <option value="https://klol.mymoe.moe/komicaLOL/">LOL</option>
+  <option value="https://komica.peroneko.org/minecraft/">Minecraft</option>
+  <option value="https://phone.mymoe.moe/bazudora/index.htm">PAD</option>
+  <option value="https://2012.mymoe.moe/pso2/">PSO2</option>
+  <option value="https://touhonoob.mymoe.moe/sd_gundum/">SDGO</option>
+  <option value="https://mymoe.moe/boards/touhonoob/starcraft/">StarCraft</option>
+  <option value="https://www.karlsland.net/t7s/">T7S</option>
+  <option value="http://www.wowhk.org/">WOW</option>
+  <option value="https://secilia.zawarudo.org/gf/">少女前線<small> new</small></option>
+  <option value="https://acs5566.mymoe.moe/shironeko/">白貓Project</option>
+  <option value="https://2cat.org/~granblue/">碧藍幻想</option>
+  <option value="https://pathofexile.mymoe.moe/komicaPOE/">流亡黯道 PoE</option>
+  <option value="https://kvindictus.mymoe.moe/Vindictus/">新瑪奇英雄傳</option>
+  <option value="https://fenrisulfr.org/wot/">戰車世界</option>
+  <option value="https://fenrisulfr.org/battlefield/">戰地風雲</option>
+  <option value="https://fenrisulfr.org/war_thunder/">戰爭雷霆</option>
+  <option value="https://fenrisulfr.org/wowp/">戰機世界</option>
+  <option value="https://fenrisulfr.org/wows/">戰艦世界</option>
+  <option value="http://acgspace.wsfun.com/kancolle/">艦隊收藏</option>
+  <option value="http://strange-komica.com/MonsterHunter/">魔物獵人</option>
+  <option value="https://lordofdota2.mymoe.moe/Hearthstone/">爐石戰記</option>
+  </optgroup>
+
+  <optgroup label="動漫作品">
+  <option value="https://aqua.komica.org/68/">動物朋友</option>
+  <option value="https://2cat.org/~touhou/">東方</option>
+  <option value="http://ningen.dreamhosters.com/leafkey/">葉鍵</option>
+  <option value="https://2cat.org/~07expansion/">龍騎士07</option>
+  <option value="https://liaison.nagatoyuki.org/szmy/">涼宮</option>
+  <option value="https://nanoha.boguspix.com/">奈葉</option>
+  <option value="https://mymoe.moe/boards/21/madoka/">廢怯少女</option>
+  <option value="https://index.mymoe.moe/index/">禁書</option>
+  <option value="https://aqua.komica.org/73/index.htm">遊戲王</option>
+  <option value="https://alleyneblade.mymoe.moe/0002/">女王之刃</option>
+  <option value="https://kagaminerin.org/aph1/">APH</option>
+  <option value="https://joshua.mymoe.moe/digimon/">Digimon</option>
+  <option value="https://komica.dbfoxtw.me/homestuck/">Homestuck</option>
+  <option value="http://idolma.ster.tw/imgbbs/">Are you RE@DY? I’m L@DY!</option>
+  <option value="https://lovelive.mymoe.moe/lovelive/">LoveLive!</option>
+  <option value="https://kagaminerin.org/pokemon/">Pokemon</option>
+  <option value="https://komica.yucie.net/prettycure/">Pretty Cure</option>
+  <option value="https://neet1145.mymoe.moe/shizuno/">Saki</option>
+  <option value="https://www.karlsland.net/sw/">Strike Witches</option>
+  <option value="http://vocaloid.orzhk.net/">VOCALOID</option>
+  </optgroup>
+
+  <optgroup label="製作公司">
+  <option value="https://no_99.mymoe.moe/capcom/">Capcom</option>
+  <option value="https://kagaminerin.org/gainax/">GAINAX</option>
+  <option value="https://www.karlsland.net/koei/">KOEI</option>
+  <option value="https://moecorner.com/iboards/Square_Enix/">SQEX</option>
+  <option value="http://gzone-anime.info/UnitedSites/TypeMoon/">TYPE-MOON</option>
+  <option value="https://komica.yucie.net/kyoutoanimate/">京都動畫</option>
+  </optgroup>
+
+  <optgroup label="聲優藝人">
+  <option value="https://komica.yucie.net/seiyuu/">聲優綜合</option>
+  <option value="https://komica.yucie.net/kugimiya/">釘宮</option>
+  <option value="https://komica.yucie.net/nana/"><nobr>田村/堀江/水樹</nobr></option>
+  <option value="https://akb48.mymoe.moe/akb48/">AKB48</option>
+  <option value="http://laurenthorizon.weebly.com/"><nobr>Sound Horizon</nobr></option>
+  </optgroup>
+
+  <optgroup label="專題板">
+  <option value="https://kagaminerin.org/flash/">角色配對</option>
+  <option value="https://kagaminerin.org/tearing/">催淚</option>
+  <option value="https://aqua.komica.org/72/">性轉換</option>
+  <option value="http://ningen.dreamhosters.com/maid/">Maid</option>
+  <option value="http://alica.dreamhosters.com/miko/">巫女</option>
+  <option value="https://komica.yucie.net/magic/">魔女</option>
+  <option value="https://komica.yucie.net/lori/">蘿莉</option>
+  <option value="http://p.komica.acg.club.tw/s/">正太</option>
+  <option value="http://sister.boguspix.com/">御姊</option>
+  <option value="http://p.komica.acg.club.tw/a/">兄貴</option>
+  <option value="https://komica.yucie.net/imoto/">妹系</option>
+  <option value="https://komica.dbfoxtw.me/jingai/">人外</option>
+  <option value="https://kemono.wtako.net/kemono/">獸</option>
+  <option value="http://msgirls.boguspix.com/">機娘</option>
+  <option value="https://2cat.komica.org/~rt/hd/">返信娘</option>
+  <option value="https://komica.yucie.net/lolita/">Lolita Fashion</option>
+  </optgroup>
+
+  <optgroup label="創作">
+  <option value="https://aqua.komica.org/30/index.htm">塗鴉王國</option>
+  <option value="https://secilia.zawarudo.org/dessin/">線上繪圖</option>
+  <option value="https://kemono.wtako.net/kemozone/">塗鴉保育區</option>
+  <option value="https://aqua.komica.org/3d/index.htm">3D</option>
+  <option value="https://secilia.zawarudo.org/avenir/">MMD</option>
+  <option value="https://aqua.komica.org/65/index.htm">同人</option>
+  <option value="https://doujin2.acgmoe.com/board/">同人2</option>
+  <option value="https://durudurudadada.mymoe.moe/soho/">SOHO</option>
+  <option value="https://luna.komica.org/20d/index.htm">宣傳</option>
+  </optgroup>
+
+  <optgroup label="飲食">
+  <option value="https://aqua.komica.org/58/index.htm">飲食</option>
+  <option value="https://liaison.nagatoyuki.org/beverage/">酒</option>
+  <option value="https://2cat.org/~coffee/">咖啡/茶</option>
+  <option value="https://2cat.org/~cooking/">烹飪</option>
+  <option value="https://kagaminerin.org/vegetarian/">素食</option>
+  </optgroup>
+
+  <optgroup label="體育運動">
+  <option value="https://aqua.komica.org/49/index.htm">體育</option>
+  <option value="https://komica.yucie.net/worldcup/">足球</option>
+  <option value="https://komica.yucie.net/budou/">武術</option>
+  </optgroup>
+
+  <optgroup label="動物">
+  <option value="https://2cat.org/~animal/">動物綜合</option>
+  <option value="https://komica.yucie.net/dog/">犬</option>
+  <option value="https://komica.yucie.net/cat/">貓</option>
+  <option value="https://2cat.org/~bird/">鳥</option>
+  <option value="http://spg-web.sytes.net/PasteChart/insect/">蟲</option>
+  <option value="https://komica.yucie.net/aquarium/">水族</option>
+  <option value="https://komica.yucie.net/adopt/">認養</option>
+  </optgroup>
+
+  <optgroup label="桌布壁紙">
+  <option value="https://2cat.org/~wallpaper/">二次壁</option>
+  <option value="http://2nee.org/bg_photo">三次壁</option>
+  <option value="https://2cat.komica.org/~touhonoob/14d/">PSV/手機壁</option>
+  </optgroup>
+
+  <optgroup label="電腦網路">
+  <option value="https://aqua.komica.org/37/index.htm">電腦/消費電子</option>
+  <option value="https://2cat.komica.org/~scribe/pixmicat_dev/">Pixmicat!</option>
+  <option value="https://aqua.komica.org/cs/">程設交流</option>    
+  <option value="https://moecorner.com/iboards/Apple/">Apple</option>
+  </optgroup>
+    
+  <optgroup label="雜談">
+  <option value="https://sora.komica.org/00/index.htm">綜合</option>
+  <option value="https://alleyneblade.mymoe.moe/queensblade/">綜合2</option>
+  <option value="https://aqua.komica.org/64/index.htm">掛圖</option>
+  </optgroup>
+
+  <optgroup label="本地板">
+  <option value="https://aqua.komica.org/22/index.htm">文化交流</option>
+  <option value="https://sora.komica.org/16/index.htm">寫真</option>
+  <option value="https://luna.komica.org/19/index.htm">女性角色</option>
+  <option value="https://sora.komica.org/38/index.htm">男性角色</option>
+  <option value="https://aqua.komica.org/57/index.htm">中性角色</option>
+  <option value="https://sora.komica.org/42a/index.html?1564399411">四格</option>
+  <option value="https://aqua.komica.org/36/index.htm">擬人化</option>
+  <option value="https://aqua.komica.org/47/index.htm">少女漫畫</option>
+  <option value="https://aqua.komica.org/29/index.htm">音樂</option>
+  <option value="https://aqua.komica.org/46/index.htm">布袋戲</option>
+  <option value="https://aqua.komica.org/35/index.htm">小說</option>
+  <option value="https://aqua.komica.org/60/index.htm">奇幻/科幻</option>
+  <option value="https://aqua.komica.org/10/index.htm">紙牌</option>
+  <option value="https://aqua.komica.org/33/index.htm">高解析度</option>
+  <option value="https://luna.komica.org/23/index.htm">GIF</option>
+  <option value="https://aqua.komica.org/24/index.htm">FLASH</option>
+  <option value="https://sora.komica.org/45/index.htm">求圖</option>
+  </optgroup>
+
+  <optgroup label="文字板">
+  <option value="https://aqua.komica.org/f1/index.php">綜合討論</option>
+  <option value="https://aqua.komica.org/f3/index.php">連結</option>
+  <option value="https://aqua.komica.org/f5/index.php">豆知識</option>
+  <option value="https://aqua.komica.org/f6/index.php">電腦</option>
+  <option value="https://aqua.komica.org/f7b/index.php">單身</option>
+  <option value="https://aqua.komica.org/f9/index.php">寫作</option>
+  </optgroup>
+
+  <optgroup label="其他">
+  <option value="https://wiki.komica.org/%E9%A6%96%E9%A0%81">KomicaWiki</option>
+  <option value="https://aqua.komica.org/up/index.php">精華區</option>
+  <option value="http://komicolle.org/">Komicolle</option>
+  </optgroup>
+
+  <optgroup label="聊天室">
+  <option value="http://l4cs.jpn.org/gikopoi/">BarGiko</option>
+  <option value="irc://irc.freenode.net/2cat">IRC</option>
+  <option value="https://2cat.komica.org/~rt/irc/">(Web)</option>
+  </optgroup>
+
+  <optgroup label="外部連結">
+  <option value="https://komica2.net/">Komica2</option>
+  <option value="http://0rz.tw/">0rz.tw</option>
+  <option value="https://www.google.co.jp/ja">Google 日本</option>
+  <option value="https://dictionary.goo.ne.jp/">goo 辞書</option>
+  <option value="https://tw.dictionary.yahoo.com/">Yahoo! 字典</option>
+  <option value="https://cdict.net/">英漢字典</option>
+  <option value="http://dict.revised.moe.edu.tw/cbdic/index.html">國語辭典</option>
+  <option value="https://www.excite.co.jp/world/chinese/">Excite 翻訳</option>
+  <option value="https://www.babelfish.com/">Babel Fish</option>
+  <option value="https://zh.wikipedia.org/">維基百科</option>
+  <option value="https://tw.answers.yahoo.com/">Yahoo! 知識+</option>
+  <option value="http://www.tdctrade.com/putonghua/index.htm">繁簡轉換</option>
+  <option value="http://www.hiragana.jp/">假名注音</option>
+  <option value="http://nihongo.j-talk.com/">漢字轉換</option>
+  </optgroup>
+
+  <optgroup label="失效連結">
+  <option value="https://orzistic.org/i/">國際政治</option>
+  <option value="https://www.svwind.org/bbs/">樂器．作曲</option>
+  <option value="https://netaba.re/cat/">角色商品</option>
+  <option value="https://mamiko.keyfans.net/">川澄/能登</option>
+  <option value="https://kana.keyfans.net/">花澤</option>
+  <option value="https://yuutan.mymoe.moe/idol/">偶像</option>
+  <option value="https://komica.chiisana.net/musicgame/">音樂遊戲</option>
+  <option value="https://komica.chiisana.net/tsundere/">傲嬌</option>
+  <option value="https://komica.chiisana.net/pizzahut/">反逆</option>
+  <option value="https://komica.chiisana.net/diy/">手工藝</option>
+  <option value="http://tehepero.org/komica/">綜合遊戲</option>
+  <option value="http://broken.goodluck.com.tw/">塗鴉工廠</option>
+  <option value="http://miyarei.org/AmericanSuperHeroes/">歐美漫畫</option>
+  </optgroup>
+</div>
+<!--選單 End-->
+
+<!--載入 jQuery 相關套件-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+$(function () {
+  // 選單初始化
+  var select_option_list= $('#select_option_list').html();
+  $('select').html(select_option_list);
+
+  // 預設選取版面：只要修改以下三個變數名稱即可替換預設版面，修改值請參照 選單List <div id="select_option_list"> 內的選單名稱
+  var default_menu_left = '綜合';
+  var default_menu_middle = '歡樂惡搞';
+  var default_menu_right = '綜合學術';
+
+  // 選單 - 預設狀態
+  $('select#menu_left option').filter(function() {
+    return $(this).text() == default_menu_left;
+  }).attr('name', 'default');
+
+  $('select#menu_middle option').filter(function() {
+    return $(this).text() == default_menu_middle;
+  }).attr('name', 'default');
+
+  $('select#menu_right option').filter(function() {
+    return $(this).text() == default_menu_right;
+  }).attr('name', 'default');
+
+  // 選單 - 預設的 url 值
+  var default_url_menu_left = $('select#menu_left option[name="default"]').val();
+  var default_url_menu_middle = $('select#menu_middle option[name="default"]').val();
+  var default_url_menu_right = $('select#menu_right option[name="default"]').val();
+
+  // 當沒有選取記錄時為預設
+  var now_menu_left = default_menu_left;
+  var now_menu_middle = default_menu_middle;
+  var now_menu_right = default_menu_right;
+
+  // 取得選取紀錄 cookies
+  var kkkk_now_option_left = $.cookie('kkkk_now_option_menu_left');
+  var kkkk_now_option_middle = $.cookie('kkkk_now_option_menu_middle');
+  var kkkk_now_option_right = $.cookie('kkkk_now_option_menu_right');
+
+  // 有選取記錄的話則為選取紀錄
+  if (typeof kkkk_now_option_left !== "undefined") {
+    now_menu_left = kkkk_now_option_left;
+  }
+  if (typeof kkkk_now_option_middle !== "undefined") {
+    now_menu_middle = kkkk_now_option_middle;
+  }
+  if (typeof kkkk_now_option_right !== "undefined") {
+    now_menu_right = kkkk_now_option_right;
+  }
+
+  // 選單 - 選取狀態
+  $('select#menu_left option').filter(function() {
+    return $(this).text() == now_menu_left;
+  }).attr('selected', 'selected');
+
+  $('select#menu_middle option').filter(function() {
+    return $(this).text() == now_menu_middle;
+  }).attr('selected', 'selected');
+
+  $('select#menu_right option').filter(function() {
+    return $(this).text() == now_menu_right;
+  }).attr('selected', 'selected');
+
+  // 選單 - 選取的 val 值
+  var now_url_menu_left = $('select#menu_left option[selected]').val();
+  var now_url_menu_middle = $('select#menu_middle option[selected]').val();
+  var now_url_menu_right = $('select#menu_right option[selected]').val();
+
+  // 版面 - 載入 (iframe src=url)
+  $('#iframe_menu_left').attr('src' , now_url_menu_left);
+  $('#iframe_menu_middle').attr('src' , now_url_menu_middle);
+  $('#iframe_menu_right').attr('src' , now_url_menu_right);
+
+  // 切換版面
+  $('.select_menu').on('change', function() {
+    var select_menu_id = $(this).attr('id');
+    var iframe_id = '#iframe_' + select_menu_id;
+    var kkkk_now_option = 'kkkk_now_option_' + select_menu_id;
+
+    //當不是選取預設版面時
+    if(this.value != 0){
+      // 紀錄選取的版面
+      $.cookie(kkkk_now_option, $(this).find('option:selected').text());
+      // 切換至該版面
+      $(iframe_id).attr('src',this.value);
+    }
+    //選取預設版面時
+    else{
+      // 清除選取記錄並重新整理頁面
+      $.cookie(kkkk_now_option, '', {expires: -1});
+      //location.reload();
+
+      var now_url_ = 0;
+      switch (select_menu_id) { 
+        case 'menu_left': 
+          now_url_ = default_url_menu_left
+          break;
+        case 'menu_middle': 
+          now_url_ = default_url_menu_middle
+          break;
+        case 'menu_right': 
+          now_url_ = default_url_menu_right
+          break;
+        default:
+          now_url_ = 0;
+      }
+      $(iframe_id).attr('src', now_url_);
+    }
+  });
+
+  // 設定 iframe 高度
+  var window_height = $( window ).height();
+  $('.iframe_container').css("height", window_height + "px");
+
+  //***其他設定功能***
+  if(0){ //清除選取紀錄 1 啟動 0 關閉
+    $.cookie('kkkk_now_option_menu_left', '', {expires: -1});
+    $.cookie('kkkk_now_option_menu_middle', '', {expires: -1});
+    $.cookie('kkkk_now_option_menu_right', '', {expires: -1});
+  }
+
+  if(0){ //檢查選取記錄值 1 啟動 0 關閉
+    alert(kkkk_now_option_left + kkkk_now_option_middle + kkkk_now_option_right);
+  }
+
+});
+</script>
+</body>
+</html>
