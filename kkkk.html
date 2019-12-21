@@ -24,7 +24,7 @@
     .column{width:32.95%;height:10px;display:inline-block;position:relative;z-index:1}
     .iframe_container{width:100%;height:10px;display:inline-block}
     .select_menu{position:absolute;top:32px;right:23px;z-index:3;width:80px;max-width:90%;transition: all 0.2s ease-in;-webkit-transition: all 0.2s ease-in;}
-    .select_menu:hover,.select_menu:focus{width:90%}
+    .select_menu:hover,.select_menu:focus{width:90%;}
     .select_menu optgroup{clear:both;}
     .select_menu option{padding:5px 10px 0 0;font-size:12pt;float:left;background:#F0E0D6;vertical-align:top;margin: 0 3px 3px 0;min-height:30px;}
   </style>
@@ -32,7 +32,7 @@
 <body>
 <!--左 Start-->
 <div class="column" id="column_left">
-  <select class="select_menu" id="menu_left" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+  <select class="select_menu" id="menu_left" onfocus='this.size=25;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
     <!--載入選單-->
   </select>
   <iframe class="iframe_container" id="iframe_menu_left" src="#"></iframe>
@@ -41,7 +41,7 @@
 
 <!--中 Start-->
 <div class="column" id="column_middle">
-  <select class="select_menu" id="menu_middle" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+  <select class="select_menu" id="menu_middle" onfocus='this.size=25;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
     <!--載入選單-->
   </select>
   <iframe class="iframe_container" id="iframe_menu_middle" src="#"></iframe>
@@ -50,7 +50,7 @@
 
 <!--右 Start-->
 <div class="column" id="column_right">
-  <select class="select_menu" id="menu_right" onfocus='this.size=45;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+  <select class="select_menu" id="menu_right" onfocus='this.size=25;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
     <!--載入選單-->
   </select>
   <iframe class="iframe_container" id="iframe_menu_right" src="#"></iframe>
@@ -60,6 +60,8 @@
 <!--選單List Start-->
 <div id="select_option_list" class="display_none">
   <option value="0">預設版面</option>
+  <option value="https://aqua.komica.org/37/index.htm">電腦/消費電子</option>
+  <option value="http://gzone-anime.info/UnitedSites/shopping/">生活消費</option>
 
   <optgroup label="4chan">
   <option value="https://boards.4chan.org/b/">/b/ - Random</option>
